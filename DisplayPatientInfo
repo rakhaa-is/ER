@@ -1,0 +1,84 @@
+
+<%@page import="java.sql.ResultSet"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+body {background-color: powderblue;}
+</style>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Show Nurse</title>
+    </head>
+    <body>
+              <%
+                DB.DB_Connection patient = new DB.DB_Connection();
+                ResultSet result = patient.getPatientInfo();
+                int rowNumber = 1 ; 
+              %>
+              <div align="center">
+              <table border = 1>
+                  <tbody>
+                      <tr>
+                           <th>No.</td>
+                          <th>ID</td>
+                          <th>English Name</th>
+                           <th>Arabic Name</th>
+                           <th>Phone Number</th>
+                           <th>gender</th>
+                           <th>Date Of Birth</th>
+                           <th>Marital Status</th>
+                           <th>Nationality</th>
+                           <th>Address</th>
+                           <th>Email</th>
+                           <th>Language</th>
+                           <th>Religion</th>
+                           <th>Health Status</th>
+                    
+                      </tr>
+                      <% while(result.next()) { %>
+                      <tr>
+                          
+                          <td><%out.print(rowNumber);%></td>
+                         
+                         <% String ID = result.getString("ID");%>
+                          
+                        <td><%out.print(ID);%></td>
+                  
+                          <td><%= result.getString("englishfirstname")%> <%= result.getString("englishsecondname")%> <%= result.getString("englishlastname")%></td>
+                     
+                          <td><%= result.getString("arabicfirstname")%> <%= result.getString("arabicsecondname")%> <%= result.getString("arabiclastname")%></td>
+                        
+                          <td><%= result.getString("phonenumber")%></td>
+                          
+                          <td><%= result.getString("gender")%></td>
+                          
+                          <td><%= result.getString("DateOfBirth")%></td>
+                          
+                          <td><%= result.getString("MaritalStatus")%></td>
+                          
+                          <td><%= result.getString("Nationality")%></td>
+                          
+                          <td><%= result.getString("address")%></td>
+                          
+                          <td><%= result.getString("Email")%></td>
+                          
+                          <td><%= result.getString("Language")%></td>
+                          
+                          <td><%= result.getString("Religion")%></td>
+                         
+                          
+                          <td><a href="DisplayPatientHealthStatus.jsp?id=<%=ID%>">Patient Main Traiage Information</a></td>
+                         
+                          <% rowNumber++; %>
+                      </tr>
+                      <% } %>
+                      
+                      
+                 
+                  </tbody>
+              </table>
+                      </div>
+    </body>
+</html>
+

@@ -1,8 +1,15 @@
-package Controller;
+package DB;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,19 +18,30 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author amals
+ * @author rakha
  */
-public class ER_Controller {
+public class DB_Connection {
+    /*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author rakha
+ */
+
     
-     String URL = "jdbc:mysql://localhost:3306/er_system?useSSL=false";
+    String URL = "jdbc:mysql://localhost:3306/cpit455?useSSL=false";
     String USERNAME= "root"; // use your username of Mysql server
-    String PASSWORD ="12345"; // use your password of Mysql server
+    String PASSWORD ="mysql"; // use your password of Mysql server
     Connection connection = null;
     PreparedStatement preparedStmt = null;
     ResultSet resultSet = null;
     String sqlQuery = "";
 
-    public ER_Controller() {
+    public DB_Connection(){
         try{
             Class.forName("com.mysql.jdbc.Driver");
 
@@ -31,71 +49,46 @@ public class ER_Controller {
 
         }catch(SQLException e){
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ER_Controller.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DB_Connection.class.getName()).log(Level.SEVERE, null, ex);
         }
+    } 
+    
+    public ResultSet getPatientInfo() {
+        sqlQuery = "SELECT * FROM patient;";
+        try{
+            preparedStmt = connection.prepareStatement(sqlQuery);
+            resultSet = preparedStmt.executeQuery();
+        }catch(SQLException e){}
+        return resultSet;
+    }
+    
+        public ResultSet getPatientStatusInfo(int ID) {
+         
+        sqlQuery = "SELECT * FROM maintraiage WHERE PatintID =" + ID + ";";
+        try{
+            preparedStmt = connection.prepareStatement(sqlQuery);
+            resultSet = preparedStmt.executeQuery();
+        }catch(SQLException e){}
+        return resultSet;
     }
 
-    
-    public ResultSet getInactiveBeds() {
-      
-        return resultSet;
-    }
-    
-    public ResultSet getActiveBeds() {
-        
-        return resultSet;
-    }
-    
-    //return all beds in the system 
-     public ResultSet getAllBeds() {
-        
-        return resultSet;
-    }
-    
-     //return all rooms in the system 
-     public ResultSet getAllRooms() {
-        
-        return resultSet;
-    }
-     
-     //retrun available room
-     public ResultSet getAvailableRooms() {
-       
-        return resultSet;
-    }
-     
-    // update bed status depend on active or inactive
-    public boolean UpdateBedsAvailability(String fName, String lName, String userName, int ID) {
-       
-        return true;
-    }
-     
-    // add new beds to the system 
-     public boolean addBeds(String fName, String lName, String userName, int ID) {
-        
-        return true;
-    }
-     
-    //add new rooms to the system 
-    public boolean addRooms(String fName, String lName, String userName, int ID) {
-       
+    public boolean addPatientInfo(int ID , String eFName, String eSName, String eLName,String aFName, String aSName, String aLName,String email, int phonenumber , String address , String gender, String Nationality , String MaritalStatus ,String Religion , Date dateOfBirth , String Language) {
+        sqlQuery = "INSERT INTO patient (ID, Email, phonenumber, address, gender, Nationality, MaritalStatus, Religion, DateOfBirth, Language, englishFirstName, englishSecondName, englishLastName, arabicFirstName, arabicSecondName, arabicLastName)"
+                + "values('" + ID + "','" + email +  "','" + phonenumber +  "','" + address +  "','" + gender +  "','" + Nationality +  "','" + MaritalStatus +  "','" + Religion +  "','" + dateOfBirth +  "','" + Language +  "','" + eFName
+                + "','" + eSName +  "','" + eLName +  "','" + aFName +  "','" + aSName +  "','" + aLName +  "','" + email +  "','" + phonenumber +  "','" + address + "');";
+        try{
+            Statement stmt = connection.createStatement();
+            int i=stmt.executeUpdate(sqlQuery);
+
+        }
+        catch(Exception e){
+            //System.out.print(e);
+            e.printStackTrace();
+        }
         return true;
     }
     
-    
-    //add new beds , increment number of beds for this room
-     public boolean addBedsInRoom(String fName, String lName, String userName, int ID) {
-       
-        return true;
-    }
-     
-     
-     //rturn number of beds in room , or return availabe beds in specified room
-     public boolean getBedsInRoom(String fName, String lName, String userName, int ID) {
-       
-        return true;
-    }
-    
-    
-    
+
 }
+
+

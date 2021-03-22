@@ -54,6 +54,23 @@ public class DB_Connection {
     } 
     
     
+    // add new beds to the system 
+     public boolean addBeds(int ID , String State , int RoomID) {
+        sqlQuery = "insert into beds(ID,State,RoomID)values('" + ID + "','" + State
+                + "','" + RoomID + "');";
+        try{
+            Statement stmt = connection.createStatement();
+            int i=stmt.executeUpdate(sqlQuery);
+
+        }
+        catch(Exception e){
+            //System.out.print(e);
+            e.printStackTrace();
+        }
+        return true;
+      
+    }
+    
     //add new rooms to the system 
     public boolean addRooms(int RoomID,  int beds , String RoomName) {
         sqlQuery = "insert into rooms(ID , numberOfBeds , name )values('" + RoomID + "','" + beds + "','" + RoomName +  "');";

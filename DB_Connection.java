@@ -87,6 +87,27 @@ public class DB_Connection {
     }
     
     
+     //return all beds in the system 
+     public ResultSet getAllBeds() {
+         sqlQuery = "SELECT * FROM BEDS;";
+        try{
+            preparedStmt = connection.prepareStatement(sqlQuery);
+            resultSet = preparedStmt.executeQuery();
+        }catch(SQLException e){}
+        return resultSet;
+        
+    }
+    
+     //return all rooms in the system 
+     public ResultSet getAllRooms() {
+         sqlQuery = "SELECT * FROM ROOMS;";
+        try{
+            preparedStmt = connection.prepareStatement(sqlQuery);
+            resultSet = preparedStmt.executeQuery();
+        }catch(SQLException e){}
+        return resultSet;
+    }
+    
     
     public ResultSet getPatientInfo() {
         sqlQuery = "SELECT * FROM patient;";

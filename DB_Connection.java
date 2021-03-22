@@ -53,6 +53,24 @@ public class DB_Connection {
         }
     } 
     
+    
+    //add new rooms to the system 
+    public boolean addRooms(int RoomID,  int beds , String RoomName) {
+        sqlQuery = "insert into rooms(ID , numberOfBeds , name )values('" + RoomID + "','" + beds + "','" + RoomName +  "');";
+        try{
+            
+            Statement stmt = connection.createStatement();
+            int i=stmt.executeUpdate(sqlQuery);
+        }
+        catch(Exception e){
+            //System.out.print(e);
+            e.printStackTrace();
+        }
+        return true;
+    }
+    
+    
+    
     public ResultSet getPatientInfo() {
         sqlQuery = "SELECT * FROM patient;";
         try{

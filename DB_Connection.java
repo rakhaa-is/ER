@@ -138,7 +138,6 @@ public class DB_Connection {
 
         }
         catch(Exception e){
-            //System.out.print(e);
             e.printStackTrace();
         }
         return true;

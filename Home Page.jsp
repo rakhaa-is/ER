@@ -69,9 +69,10 @@ li a:hover {
             </thead>
             <tbody>
                 <tr>
-                    <td style="background-color:navy; color:white; text-align: center" ><img src="Patient-form.png" alt="" ><br>  Patient Form  </td>
+                    <td style="background-color:navy; color:white; text-align: center" ><img src="Patient-form.png" alt="" ><br><a style="font-size:1.3em; color: white;" href="PatientInfoConformation.jsp">Patient Form</a><br></td>
                     <td style="background-color:lightgreen; color:white; text-align: center" >
-                        <img src="Medicl-Form.png" alt="" ><br>  Medical History  </td>
+                        <img src="Medicl-Form.png" alt="" ><br><a style="font-size:1.3em; color: white;" href="PaterniMainTraiageConformation.jsp">Medical History</a><br></td>
+                    
                 </tr>
                 <tr>
                     <td style="background-color:darkslategray; text-align: center"> <img src="Room-hospitall.png" alt="" >

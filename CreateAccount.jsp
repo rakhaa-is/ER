@@ -1,19 +1,37 @@
 <%-- 
     Document   : CreateAccount
-    Created on : 18/03/2021, 02:55:20 م
-    Author     : NUHA
+    Created on : 26-Mar-2021, 12:10:03
+    Author     : amals
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
+         <style>
+body {
+  background-image: url("Back3.png");
+   background-attachment:fixed;
+  background-size:cover;
+}          
+    </style>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Create Account</title>
     </head>
     <body>
-        <form name="CreateAccounts" action="display.jsp" method="POST">
-            <table border="0">
+        <br>
+        <br>
+        <br>
+        <br>
+        <table style="background-color: white; margin-right:auto; margin-left:auto;">
+            <tbody>
+                <tr>
+                    <td>
+                      
+                        <h1>Welcome to ER system, Please sign in first.</h1>
+                        <br>
+        <form name="CreateAccounts" action="Home Page.jsp" method="POST">
+            <table style=" margin-right:auto; margin-left:auto;">
 
                 <tbody>
                     <tr>
@@ -50,7 +68,7 @@
                                 <option>Choose</option>
                                 <option>Doctor</option>
                                 <option>Nurse</option>
-                                <option>Patient</option>
+                                <option>Admin</option>
                             </select></td>
                     </tr>
                     <tr>
@@ -61,5 +79,12 @@
             </table>
         </form>
 
+        
+                        <br>                 
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
     </body>
 </html>

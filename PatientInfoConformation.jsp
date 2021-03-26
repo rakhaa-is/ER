@@ -1,13 +1,63 @@
+<%-- 
+    Document   : PatientInfoConformation
+    Created on : 26-Mar-2021, 12:01:51
+    Author     : amals
+--%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
+                   <style>
+         body {
+  background-image: url("Back3.png");
+   background-attachment:fixed;
+  background-size:cover;
+}   
+ul {
+ 
+  list-style-type: none;
+  margin: 0;
+  padding: 10px;
+  overflow: hidden;
+  background-color: white;
+ 
+}
+li {
+  float: left;
+}
+
+li a {
+  border-radius: 25px;
+  display: block;
+  color: Black;
+  font-size: 20px;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+li a:hover {
+  background-color: #C5C2C2;
+}
+           
+    </style>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Regestier Patient Information</title>
+        <title>JSP Page</title>
     </head>
-    <body>
-        <h1>Regestier Patient Information</h1>
+    
+      <body>
+          
+           <table style="background-color: white; margin-right:auto; margin-left:auto;">
+            <tbody>
+                <tr>
+                    <td>
+                      
+                        <h1>Register Patient Information</h1>
+                        <br>
+          
+        
         <form name="AddPatientInfo" action="displayPatientForm.jsp" method="POST">
             <table border="0">
 
@@ -80,16 +130,19 @@
                     </tr>
                 </tbody>
                 <script>
-
                     function myFunction() {
-
                         alert("The patient has been successfully added");
-
                     }
                 </script>
             </table>
         </form>
+                        
+                        
+                        <br>                 
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
     </body>
 </html>
-

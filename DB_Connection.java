@@ -1,5 +1,6 @@
 package DB;
 
+import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -55,6 +56,49 @@ public class DB_Connection {
     
     
     // add new beds to the system 
+    String symbol  ;
+     public boolean createAccount(String role , String fName , String sName , String lName , String email , String ID , String password , String phoneNumber) {
+           String Id_ = idWithSymbol(role , ID);
+            
+          sqlQuery = "insert into "+role+"( ID, firstname, secondname, lastname, Email, password, phonenumber)values('" + Id_ + "','" + fName
+                + "','" + sName + "','" + lName + "','" + email + "','" + password + "','" + phoneNumber + "');";
+        try{
+            Statement stmt = connection.createStatement();
+            int i=stmt.executeUpdate(sqlQuery);
+
+        }
+        catch(Exception e){
+            //System.out.print(e);
+            e.printStackTrace();
+        }
+        return true;
+}
+     
+     public String idWithSymbol(String role , String ID){
+         if (role.equalsIgnoreCase("Nurse")){
+                symbol = "NU"+ID;
+            }else if (role.equalsIgnoreCase("Doctor")){
+                symbol = "DR"+ID;
+            }else if (role.equalsIgnoreCase("Administrator")){
+                symbol = "AD"+ID; 
+            }
+         return symbol;
+     }
+     
+        public boolean login_validation(String role , String ID , String password) {
+       
+           sqlQuery = "SELECT * FROM "+ role +" WHERE ID =" + ID + " AND password =  " + password + ";";
+           
+           try { 
+            preparedStmt = connection.prepareStatement(sqlQuery);
+            resultSet = preparedStmt.executeQuery();
+            
+        }catch(SQLException e){}
+        return true;
+}
+
+
+
      public boolean addBeds(int ID , String State , int RoomID) {
         sqlQuery = "insert into beds(ID,State,RoomID)values('" + ID + "','" + State
                 + "','" + RoomID + "');";
@@ -118,6 +162,15 @@ public class DB_Connection {
         return resultSet;
     }
     
+        public ResultSet getAllPatientsHealthInfo() {
+        sqlQuery = "SELECT * FROM maintraiage;";
+        try{
+            preparedStmt = connection.prepareStatement(sqlQuery);
+            resultSet = preparedStmt.executeQuery();
+        }catch(SQLException e){}
+        return resultSet;
+    }
+    
         public ResultSet getPatientStatusInfo(int ID) {
          
         sqlQuery = "SELECT * FROM maintraiage WHERE PatintID =" + ID + ";";
@@ -145,5 +198,3 @@ public class DB_Connection {
     
 
 }
-
-

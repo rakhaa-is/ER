@@ -1,7 +1,7 @@
 <%-- 
-    Document   : CreateAccount
-    Created on : 26-Mar-2021, 12:10:03
-    Author     : amals
+    Document   : create_account
+    Created on : 26/03/2021, 03:07:27 م
+    Author     : rakha
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -30,7 +30,7 @@ body {
                       
                         <h1>Welcome to ER system, Please sign in first.</h1>
                         <br>
-        <form name="CreateAccounts" action="Home Page.jsp" method="POST">
+        <form name="CreateAccounts" action="NewUser.jsp" method="POST">
             <table style=" margin-right:auto; margin-left:auto;">
 
                 <tbody>
@@ -46,14 +46,15 @@ body {
                         <td>Last Name</td>
                         <td><input type="text" name="lName" value="" size="20" /></td>
                     </tr>
+                    	    <tr>
+                        <td>ID</td>
+                        <td><input type="number" name="ID" value="" size="10" /></td>
+                    </tr>
                     <tr>
                         <td>Email</td>
                         <td><input type="text" name="Email" value="" size="30" /></td>
                     </tr>
-					    <tr>
-                        <td>ID</td>
-                        <td><input type="number" name="ID" value="" size="10" /></td>
-                    </tr>
+			
                     <tr>
                         <td>Password</td>
                         <td><input type="password" name="password" value="" size="8" /></td>
@@ -62,29 +63,32 @@ body {
                         <td>Confirm Password</td>
                         <td><input type="password" name="password" value="" size="8" /></td>
                     </tr>
+                    
+                    <tr>
+                        <td>Phone Number</td>
+                        <td><input type="number" name="PhoneNumber" value="" size="10" /></td>
+                    </tr>
                     <tr>
                         <td>Role</td>
                         <td><select name="role">
                                 <option>Choose</option>
-                                <option>Doctor</option>
-                                <option>Nurse</option>
-                                <option>Admin</option>
+                                <option value="Doctor">Doctor</option>
+                                <option value="Nurse">Nurse</option>
+                                <option value="Administrator">Administrator</option>
                             </select></td>
                     </tr>
                     <tr>
-                        <td><input type="submit" value="Create" name="Create" /> </td>
+                        <td><input type="submit" value="Create" name="Create"/> </td>
                         <td><input type="reset" value="Clear" name="Clear" /></td>
                     </tr>
                 </tbody>
             </table>
         </form>
-
-        
                         <br>                 
                     </td>
                 </tr>
             </tbody>
-        </table>
+        </table>     
         
     </body>
 </html>

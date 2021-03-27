@@ -1,0 +1,32 @@
+// the changes are adding phoneNumber in adminstrators table also change all id of following tables to varchar instead of int.
+create table Nurse(
+    ID VARCHAR(255) primary key,
+     firstname VARCHAR(255),
+    secondname VARCHAR(255),
+    lastname VARCHAR(255),
+	Email VARCHAR(255),
+    password VARCHAR(255),
+    phonenumber integer(30)
+    );
+
+
+create table Doctor(
+    ID VARCHAR(255) primary key,
+     firstname VARCHAR(255),
+    secondname VARCHAR(255),
+    lastname VARCHAR(255),
+	Email VARCHAR(255),
+    password VARCHAR(255),
+    phonenumber integer(30)
+    );
+    
+    
+create table Administrator(
+    ID VARCHAR(255) primary key,
+     firstname VARCHAR(255),
+    secondname VARCHAR(255),
+    lastname VARCHAR(255),
+	Email VARCHAR(255),
+    password VARCHAR(255),
+    phonenumber integer(30)
+    );

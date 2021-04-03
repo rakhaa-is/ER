@@ -152,6 +152,88 @@ public class DB_Connection {
         return resultSet;
     }
     
+      public ResultSet getRoom(int ID) {
+        sqlQuery = "SELECT * FROM ROOMS WHERE ID = " + ID +";";
+        try{
+            preparedStmt = connection.prepareStatement(sqlQuery);
+            resultSet = preparedStmt.executeQuery();
+        }catch(SQLException e){}
+        return resultSet;
+    }
+      
+        public ResultSet getBed(int ID) {
+        sqlQuery = "SELECT * FROM BEDS WHERE ID = " + ID +";";
+        try{
+            preparedStmt = connection.prepareStatement(sqlQuery);
+            resultSet = preparedStmt.executeQuery();
+        }catch(SQLException e){}
+        return resultSet;
+    }
+    
+       public int updateRoomInfo(int ID, int numOfBeds, String name) {
+        sqlQuery = "update rooms set ID = ? , numberOfBeds = ? , name = ? WHERE ID = " + ID ;
+        int i = 0;
+        try{
+           preparedStmt = connection.prepareStatement(sqlQuery);
+           preparedStmt.setInt(0, ID);
+           preparedStmt.setInt(1, numOfBeds);
+           preparedStmt.setString(2, name);
+           i = preparedStmt.executeUpdate();
+        }
+        catch(Exception e){
+            //System.out.print(e);
+            e.printStackTrace();
+        }
+        return i;
+    }
+        
+           public int updateBedInfo(int ID, String state, int RoomID) {
+        sqlQuery = "update beds set ID = ? , state = ? , RoomID = ? WHERE ID = " + ID ;
+        int i = 0;
+        try{
+           preparedStmt = connection.prepareStatement(sqlQuery);
+           preparedStmt.setInt(0, ID);
+           preparedStmt.setString(1, state);
+           preparedStmt.setInt(2, RoomID);
+           i = preparedStmt.executeUpdate();
+        }
+        catch(Exception e){
+            //System.out.print(e);
+            e.printStackTrace();
+        }
+        return i;
+    }
+    
+    public boolean isRoomDeleted(int ID) {
+ 
+        
+        sqlQuery = "delete from rooms where ID = "+ ID +";"; 
+        try{
+            Statement stmt = connection.createStatement();
+            int i=stmt.executeUpdate(sqlQuery);
+        }
+        catch(Exception e){
+            //System.out.print(e);
+            e.printStackTrace();
+        }
+        return true;
+        
+    }
+    public boolean isBedDeleted(int ID) {
+ 
+        
+        sqlQuery = "delete from beds where ID = "+ ID +";"; 
+        try{
+            Statement stmt = connection.createStatement();
+            int i=stmt.executeUpdate(sqlQuery);
+        }
+        catch(Exception e){
+            //System.out.print(e);
+            e.printStackTrace();
+        }
+        return true;
+        
+    } 
     
     public ResultSet getPatientInfo() {
         sqlQuery = "SELECT * FROM patient;";

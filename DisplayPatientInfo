@@ -1,3 +1,9 @@
+<%-- 
+    Document   : DisplayPatientInfo
+    Created on : 15/03/2021, 04:29:50 ص
+    Author     : rakha
+--%>
+
 
 <%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -5,7 +11,11 @@
 <html>
     <head>
         <style>
-body {background-color: powderblue;}
+         body {
+  background-image: url("Back3.png");
+   background-attachment:fixed;
+  background-size:cover;
+}   
 </style>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Show Nurse</title>
@@ -23,16 +33,11 @@ body {background-color: powderblue;}
                            <th>No.</td>
                           <th>ID</td>
                           <th>English Name</th>
-                           <th>Arabic Name</th>
-                           <th>Phone Number</th>
-                           <th>gender</th>
-                           <th>Date Of Birth</th>
-                           <th>Marital Status</th>
-                           <th>Nationality</th>
-                           <th>Address</th>
-                           <th>Email</th>
+                          <th>Arrival Time</th>
+                          <th>Phone Number</th>
+                          <th>Gender</th>
+                          <th>Date Of Birth</th>
                            <th>Language</th>
-                           <th>Religion</th>
                            <th>Health Status</th>
                     
                       </tr>
@@ -47,25 +52,16 @@ body {background-color: powderblue;}
                   
                           <td><%= result.getString("englishfirstname")%> <%= result.getString("englishsecondname")%> <%= result.getString("englishlastname")%></td>
                      
-                          <td><%= result.getString("arabicfirstname")%> <%= result.getString("arabicsecondname")%> <%= result.getString("arabiclastname")%></td>
-                        
+                           <td><%= result.getString("time_stamp")%></td>
+                           
                           <td><%= result.getString("phonenumber")%></td>
                           
                           <td><%= result.getString("gender")%></td>
                           
                           <td><%= result.getString("DateOfBirth")%></td>
                           
-                          <td><%= result.getString("MaritalStatus")%></td>
-                          
-                          <td><%= result.getString("Nationality")%></td>
-                          
-                          <td><%= result.getString("address")%></td>
-                          
-                          <td><%= result.getString("Email")%></td>
-                          
                           <td><%= result.getString("Language")%></td>
                           
-                          <td><%= result.getString("Religion")%></td>
                          
                           
                           <td><a href="DisplayPatientHealthStatus.jsp?id=<%=ID%>">Patient Main Traiage Information</a></td>

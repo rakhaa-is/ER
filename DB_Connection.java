@@ -277,6 +277,17 @@ public class DB_Connection {
         }
         return true;
     }
+     public boolean assignPatientToTeam(int doctorID,int patientID, String teamName) {
+        sqlQuery = "insert into doctorassignpatient(doctorID , PatintID , TeamName )values('" + doctorID + "','" + patientID + "','" + teamName +  "');";
+         try{
+            Statement stmt = connection.createStatement();
+            int i=stmt.executeUpdate(sqlQuery);
+        }
+        catch(Exception e){
+           
+        }
+        return true;
+    }
     
 
 }

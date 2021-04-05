@@ -85,6 +85,44 @@
                         <br>                 
                     </td>
                 </tr>
+                                <tr>
+                    <td>
+                        <h1>Assign Patient to Beds</h1>
+                        <br>
+                        <form name="assignToTeam" action="AssignPatientToBed.jsp" method="POST">
+                            <table border="0">
+                                <tbody>
+
+                                    <tr>
+                                <select>
+                                    <option>Select</option>
+                                    <%
+                                        try {
+                                            DB.DB_Connection conn = new DB.DB_Connection();
+                                            ResultSet result = conn.getAllRooms();
+                                            int rowNumber = 1;
+                                            while(result.next()){
+                                                %>
+                                                <option><%=result.getString("name")%></option>
+                                                <%
+                                            }
+                                        } catch (Exception e) {
+
+                                        }
+                                    %>
+                                </select>
+                                </tr>
+                                <tr>
+                                    <td><input type="submit" value="SearchBeds" name="SearchBeds"/> </td>
+                                </tr>
+                                
+                                
+                                </tbody>
+                            </table>
+                        </form>
+                        <br>                 
+                    </td>
+                </tr>
             </tbody>
     </body>
 </html>

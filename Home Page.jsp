@@ -49,6 +49,7 @@ li a:hover {
             String role = "";
             String ID = request.getParameter("ID");
             String sub = ID.substring(0, 2);
+            int idNum = Integer.parseInt(ID.substring(2, ID.length()-1));
             String password = request.getParameter("password");
             DB.DB_Connection conn = new DB.DB_Connection();
             if ( sub.equalsIgnoreCase("DR")){
@@ -84,7 +85,7 @@ li a:hover {
                        %> 
                        
                  <tr>
-                     <td style="background-color:darkslategray; color:white; text-align: center" ><img src="patients.png" alt="" ><br><br><a style="font-size:1.3em; color: white;" href="DisplayPatientInfo.jsp">Display All Patient</a><br><br></td>
+                     <td style="background-color:darkslategray; color:white; text-align: center" ><img src="patients.png" alt="" ><br><br><a style="font-size:1.3em; color: white;" href="DisplayPatientInfo.jsp?id=<%=idNum%>">Display All Patient</a><br><br></td>
                     <td style="background-color:navy; color:white; text-align: center" >
                         <img src="patients-record.png" alt="" ><br><br><a style="font-size:1.3em; color: white;" href="DisplayAllPatientHealthStatus.jsp"> Patient History Record</a><br><br></td>
                     

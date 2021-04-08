@@ -21,11 +21,13 @@
         <title>Show Nurse</title>
     </head>
     <body>
-              <%
-                DB.DB_Connection patient = new DB.DB_Connection();
-                ResultSet result = patient.getPatientInfo();
-                int rowNumber = 1 ; 
-              %>
+             <%
+            String doctorID = request.getParameter("id");
+            int id = Integer.parseInt(doctorID);
+            DB.DB_Connection patient = new DB.DB_Connection();
+            ResultSet result = patient.getPatientInfo();
+            int rowNumber = 1;
+        %>
               <div align="center">
               <table border = 1>
                   <tbody>

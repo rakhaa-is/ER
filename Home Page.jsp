@@ -1,5 +1,4 @@
 
-
 <%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -85,14 +84,14 @@ li a:hover {
                        %> 
                        
                  <tr>
-                     <td style="background-color:darkslategray; color:white; text-align: center" ><img src="patients.png" alt="" ><br><br><a style="font-size:1.3em; color: white;" href="DisplayPatientInfo.jsp?id=<%=idNum%>">Display All Patient</a><br><br></td>
-                    <td style="background-color:navy; color:white; text-align: center" >
-                        <img src="patients-record.png" alt="" ><br><br><a style="font-size:1.3em; color: white;" href="DisplayAllPatientHealthStatus.jsp"> Patient History Record</a><br><br></td>
-                    
+                     <td style="background-color:#659EC7; color:white; text-align:center;height:100;width:100;" ><br><br><a style="font-size:1.3em; color: white;" href="DisplayPatientInfo.jsp?id=<%=idNum%>"><img src="patients.png" alt="" height="100" width="100"></a><br>Display All Patient<br></td>
+                    <td style="background-color:#87AFC7; color:white; text-align: center" >
+                        <br><br><a style="font-size:1.3em; color: white;" href="DisplayAllPatientHealthStatus.jsp"><img src="patients-record.png" alt="" ></a><br>Patient History Record<br></td>
+                    <td style="background-color:#B7CEEC; text-align: center">
+                        <br><a style="font-size:1.3em; color: white;" href="DisplayRooms.jsp"><img src="ER-Rooms.png" ></a><br>Room</td>
                 </tr>
                 <tr>
-                    <td style="background-color:lightgreen; text-align: center"> <img src="ER-Rooms.png" >
-                        <br><a style="font-size:1.3em; color: white;" href="DisplayRooms.jsp">Rooms</a><br></td>                    
+                                        
                 </tr>
                  
                        <%
@@ -100,30 +99,26 @@ li a:hover {
                    }else if (role.equalsIgnoreCase("Nurse")){
                      %> 
                 <tr>
-                    <td style="background-color:lightblue; color:white; text-align: center" ><img src="Patient-form.png" alt="" ><br><a style="font-size:1.3em; color: white;" href="PatientInfoConformation.jsp">Patient Form</a><br></td>
-                    <td style="background-color:lightgreen; color:white; text-align: center" >
-                        <img src="Medicl-Form.png" alt="" ><br><a style="font-size:1.3em; color: white;" href="PatientMainTraiageConformation.jsp">Medical History</a></td>
-                    
+                    <td style="background-color:#659EC7; color:white; text-align: center" ><br><a style="font-size:1.3em; color: white;" href="PatientInfoConformation.jsp"><img src="Patient-form.png" alt="" ></a><br>Patient Form</td>
+                    <td style="background-color:#87AFC7; color:white; text-align: center" >
+                        <br><a style="font-size:1.3em; color: white;" href="PatientMainTraiageConformation.jsp"><img src="Medicl-Form.png" alt="" ></a><br>Medical History</td>
                 </tr>
                  <tr>
-                     <td style="background-color:darkslategray; color:white; text-align: center" ><img src="patients.png" alt="" ><br><br><a style="font-size:1.3em; color: white;" href="DisplayPatientInfo.jsp">Display All Patient</a><br><br></td>
-                    <td style="background-color:navy; color:white; text-align: center" >
-                        <img src="patients-record.png" alt="" ><br><br><a style="font-size:1.3em; color: white;" href="DisplayAllPatientHealthStatus.jsp"> Patient History Record</a><br><br></td>
-                    
+                     <td style="background-color:#B7CEEC; color:white; text-align: center" ><br><br><a style="font-size:1.3em; color: white;" href="DisplayPatientInfo.jsp"><img src="patients.png" alt="" ></a><br>Display All Patient<br></td>
+                    <td style="background-color:#B4CFEC; color:white; text-align: center" >
+                        <br><br><a style="font-size:1.3em; color: white;" href="DisplayAllPatientHealthStatus.jsp"><img src="patients-record.png" alt="" ></a><br>Patient History Record<br></td>
                 </tr>
-                
                 <tr>
-                    <td style="background-color:lightgreen; text-align: center"> <img src="ER-Rooms.png"  >
-                        <br><a style="font-size:1.3em; color: white;" href="DisplayRooms.jsp">Rooms</a><br><br></td>
+                    <td style="background-color:#737CA1; text-align: center"> 
+                        <br><a style="font-size:1.3em; color: white;" href="DisplayRooms.jsp"><img src="ER-Rooms.png"></a><br>Rooms<br></td>
                 </tr> 
                      <%
                    }else if (role.equalsIgnoreCase("administrator")){
                        
                     %> 
-                    
                     <tr>
-                    <td style="background-color:lightgreen; text-align: center"> <img src="ER-Rooms.png" alt="" >
-                        <br><a style="font-size:1.3em; color: white;" href="AdminRooms.jsp">Rooms</a><br></td>
+                    <td style="background-color:#87AFC7; text-align: center"> 
+                        <br><a style="font-size:1.3em; color: white;" href="AdminRooms.jsp"><img src="ER-Rooms.png" alt="" ></a><br>Rooms</td>
                     
                 </tr>
                     

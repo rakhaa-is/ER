@@ -54,14 +54,15 @@ li a:hover {
                     <th></th>
                 </tr>
             </thead>
-            <tbody>
+              <tbody>
                 <tr>
-                    <td style=" color:white; text-align: center" ><img src="sign_up.png" alt="" ><br><a style="font-size:1.3em; color: white;" href="create_account.jsp">Sign Up</a><br></td>
+                    <th><br><a href="create_account.jsp"style="font-size:1.3em; color: white; text-align: center;" ><br><img src="sign_up.png" alt="" height="100" width="100"></a><br></th>
+                    <th style="text-align: center"><br>
+                        <a style="font-size:1.3em; color: white;" href="log_in.jsp" ><br><img src="log_in.png"  alt="" height="100" width="100"></a><br></th>
                 </tr>
                 <tr>
-                    <td style="text-align: center"> <img src="log_in.png" alt="" >
-                        <br><a style="font-size:1.3em; color: white;" href="log_in.jsp">Log in</a><br></td>
-                   
+                    <th>Create Account</th>
+                    <th>Log In</th>
                 </tr>
             </tbody>
         </table>

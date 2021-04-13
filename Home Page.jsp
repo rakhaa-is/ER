@@ -88,7 +88,7 @@ li a:hover {
                     <td style="background-color:#87AFC7; color:white; text-align: center" >
                         <br><br><a style="font-size:1.3em; color: white;" href="DisplayAllPatientHealthStatus.jsp"><img src="patients-record.png" alt="" ></a><br>Patient History Record<br></td>
                     <td style="background-color:#B7CEEC; text-align: center">
-                        <br><a style="font-size:1.3em; color: white;" href="DisplayRooms.jsp"><img src="ER-Rooms.png" ></a><br>Room</td>
+                         <br><a style="font-size:1.3em; color: white;" href="update_bed_state.jsp"><img src="Beds.png" ></a><br>Update Bed State</td>
                 </tr>
                 <tr>
                                         

@@ -57,18 +57,31 @@ li a:hover {
                         <h1>Register Patient Information</h1>
                         <br>
           
-        
-        <form name="AddPatientInfo" action="displayPatientForm.jsp" method="POST">
+        <form name="AddPatientInfo" action="AddPatientINfo.jsp" method="POST">
             <table border="0">
-
-                <tbody>
                     <tr>
-                        <td>Arabic Full Name</td>
-                        <td><input type="text" name="ArabicName" value="" size="30" /></td>
+                        <td>Arabic First Name</td>
+                        <td><input type="text" name="AFisrtName" value="" size="30" /></td>
                     </tr>
                     <tr>
-                        <td>English Full Name</td>
-                        <td><input type="text" name="EnglishName" value="" size="30" /></td>
+                        <td>Arabic Second Name</td>
+                        <td><input type="text" name="ASecondName" value="" size="30" /></td>
+                    </tr>
+                    <tr>
+                        <td>Arabic Last Name</td>
+                        <td><input type="text" name="ALastName" value="" size="30" /></td>
+                    </tr>
+                    <tr>
+                        <td>English First Name</td>
+                        <td><input type="text" name="EFirstName" value="" size="30" /></td>
+                    </tr>
+                    <tr>
+                        <td>English Second Name</td>
+                        <td><input type="text" name="ESecondName" value="" size="30" /></td>
+                    </tr>
+                    <tr>
+                        <td>English Last Name</td>
+                        <td><input type="text" name="ELastName" value="" size="30" /></td>
                     </tr>
                     <tr>
                         <td>ID</td>
@@ -79,12 +92,12 @@ li a:hover {
                         <td><input type="Email" name="Email" value="" size="30" /></td>
                     </tr>
                     <tr>
-                        <td>phonenumber</td>
+                        <td>Phone number</td>
                         <td><input type="text" name="phonenumber" value="" size="30" /></td>
                     </tr>
                     <tr>
                         <td>Date of birth</td>
-                        <td><input type="text" name="DateOfBirth" value="" size="30" /></td>
+                        <td><input type="text" name="DateOfBirth" value="" placeholder="YYYY-MM-DD" size="30" /></td>
                     </tr>
                     <tr>
                         <td>Address</td>
@@ -98,46 +111,40 @@ li a:hover {
                     <tr>
                         <td>Gender</td>
                         <td><select name="gender">
-                                <option>male</option>
-                                <option>Female</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
                             </select></td>
                     </tr>
 
                     <tr>
                         <td>Religion</td>
                         <td><select name="Religion">
-                                <option>Muslim</option>
-                                <option>Other</option>
+                                <option value="Muslim">Muslim</option>
+                                <option value="Other">Other</option>
                             </select></td>
                     </tr>
                     <tr>
                         <td>Language</td>
-                        <td><select name="Language">
-                                <option>Arabic</option>
-                                <option>Other</option>
+                        <td><select name="Languages">
+                                <option value="Arabic">Arabic</option>
+                                <option value="Other">Other</option>
                             </select></td>
                     </tr>
                     <tr>
                         <td>Nationality</td>
                         <td><select name="Nationality">
-                                <option>Saudi</option>
-                                <option>not Saudi</option>
+                                <option value="Saudi">Saudi</option>
+                                <option value="Not saudi">Not saudi</option>
                             </select></td>
                     </tr>
                     <tr>
-                        <td><input type="submit" value="Add" name="Add"  onclick="myFunction()"/> </td>
+                        <td><input type="submit" value="Add" name="Add" /> </td>
                         <td><input type="reset" value="Clear" name="Clear" /></td>
                     </tr>
                 </tbody>
-                <script>
-                    function myFunction() {
-                        alert("The patient has been successfully added");
-                    }
-                </script>
+              
             </table>
         </form>
-                        
-                        
                         <br>                 
                     </td>
                 </tr>

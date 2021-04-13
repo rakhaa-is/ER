@@ -281,14 +281,14 @@ public class DB_Connection {
         return resultSet;
     }
 
-    public boolean addPatientInfo(int ID , String eFName, String eSName, String eLName,String aFName, String aSName, String aLName,String email, int phonenumber , String address , String gender, String Nationality , String MaritalStatus ,String Religion , Date dateOfBirth , String Language) {
-        sqlQuery = "INSERT INTO patient (ID, Email, phonenumber, address, gender, Nationality, MaritalStatus, Religion, DateOfBirth, Language, englishFirstName, englishSecondName, englishLastName, arabicFirstName, arabicSecondName, arabicLastName)"
-                + "values('" + ID + "','" + email +  "','" + phonenumber +  "','" + address +  "','" + gender +  "','" + Nationality +  "','" + MaritalStatus +  "','" + Religion +  "','" + dateOfBirth +  "','" + Language +  "','" + eFName
-                + "','" + eSName +  "','" + eLName +  "','" + aFName +  "','" + aSName +  "','" + aLName +  "','" + email +  "','" + phonenumber +  "','" + address + "');";
+     public boolean addPatientInfo(int ID , String eFName, String eSName, String eLName,String aFName, String aSName, String aLName,String email, int phonenumber , String address , String gender, String Nationality , String MaritalStatus ,String Religion , Date dateOfBirth , String Language) {
+       
+        sqlQuery = "INSERT INTO patient (ID, Email, phonenumber, address, gender, Nationality, MaritalStatus, Religion, DateOfBirth, Languages, englishFirstName, englishSecondName, englishLastName, arabicFirstName, arabicSecondName, arabicLastName)"
+                + "VALUES('" + ID + "','" + email +  "','" + phonenumber +  "','" + address +  "','" + gender +  "','" + Nationality +  "','" + MaritalStatus +  "','" + Religion +  "','" + dateOfBirth +  "','" + Language +  "','" + eFName
+                + "','" + eSName +  "','" + eLName +  "','" + aFName +  "','" + aSName +  "','" + aLName + "');";
         try{
             Statement stmt = connection.createStatement();
             int i=stmt.executeUpdate(sqlQuery);
-
         }
         catch(Exception e){
             e.printStackTrace();

@@ -1,9 +1,9 @@
 <%-- 
     Document   : AssignPatientToTeam
-    Created on : 05/04/2021, 12:53:42 ص
-    Author     : haneen
+    Created on : 08-Apr-2021, 10:59:59
+    Author     : amals
 --%>
-
+<%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -24,14 +24,11 @@
             if (isAdded) {
         %>
         <script>
-
             alert("this patient is successfully added to"+teamName);
-
         </script>
         <%
             } else {
                 out.print("Error");
-
             }
         %> 
     </body>

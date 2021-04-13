@@ -235,6 +235,24 @@ public class DB_Connection {
         
     } 
     
+      public boolean addMainTraiage(int PatintID , String HCO3 ,String Temperature ,String CO2 , String BloodPressure ,String OxygenSaturation ,String HeartRate , String SO2 ,
+           String Glucose ,String BaseExcess ,String RespiratoryRate ,String ECG ,String PH ,String PO2 ,String Chiefcomplain ,String CTASscore , String COVIDStatus ){
+       
+        sqlQuery = "INSERT INTO maintraiage (PatintID, HCO3, Temperature, CO2, BloodPressure, OxygenSaturation, HeartRate, SO2, Glucose, BaseExcess, RespiratoryRate, ECG, PH, PO2, Chiefcomplain, CTASscore, COVIDStatus)"
+                + "values('" + PatintID + "','" + HCO3 +  "','" + Temperature +  "','" + CO2 +  "','" + BloodPressure +  "','" + OxygenSaturation +  "','" + HeartRate +  "','" + SO2 +  "','" + Glucose +  "','" + BaseExcess +  "','" + RespiratoryRate
+                + "','" + ECG +  "','" + PH +  "','" + PO2 +  "','" + Chiefcomplain +  "','" + CTASscore +  "','" + COVIDStatus + "');";
+        try{
+            Statement stmt = connection.createStatement();
+            int i=stmt.executeUpdate(sqlQuery);
+
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return true;
+    }
+    
+    
     public ResultSet getPatientInfo() {
         sqlQuery = "SELECT * FROM patient;";
         try{

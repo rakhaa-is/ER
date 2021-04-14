@@ -57,11 +57,12 @@ body {
 			
                     <tr>
                         <td>Password</td>
-                        <td><input type="password" name="password" value="" size="8" /></td>
+                        <td><input type="password" name="pass" title="Password must be 8 characters including 1 uppercase letter, 1 lowercase letter and numeric characters" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" ></td>
+
                     </tr>
                     <tr>
                         <td>Confirm Password</td>
-                        <td><input type="password" name="password" value="" size="8" /></td>
+                        <td><input type="password" name="password" value="" size="20" /></td>
                     </tr>
                     
                     <tr>

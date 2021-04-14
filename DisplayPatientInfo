@@ -26,6 +26,8 @@
             int id = Integer.parseInt(doctorID);
             DB.DB_Connection patient = new DB.DB_Connection();
             ResultSet result = patient.getPatientInfo();
+            ResultSet result1;
+             ResultSet result2;
             int rowNumber = 1;
         %>
               <div align="center">
@@ -41,6 +43,8 @@
                           <th>Date Of Birth</th>
                            <th>Language</th>
                            <th>Health Status</th>
+                            <th>Team Name</th>
+                        <th>Bed ID</th>
                     
                       </tr>
                       <% while(result.next()) { %>
@@ -48,7 +52,10 @@
                           
                           <td><%out.print(rowNumber);%></td>
                          
-                         <% String ID = result.getString("ID");%>
+                         <% String ID = result.getString("ID");
+                         result1 = patient.getPatientTeam(Integer.parseInt(ID));
+                          result2 = patient.getPatientBed(Integer.parseInt(ID));
+                         %>
                           
                         <td><%out.print(ID);%></td>
                   
@@ -67,8 +74,18 @@
                          
                           
                           <td><a href="DisplayPatientHealthStatus.jsp?id=<%=ID%>">Patient Main Traiage Information</a></td>
-                          <td><a href="AssignPatient.jsp?id=<%=ID%>&doctorID=<%=doctorID%>">Assign Patient</a></td>
-                         
+                          <td>
+                            <a href="AssignPatient.jsp?id=<%=ID%>&doctorID=<%=doctorID%>"> Update Team </a>
+                            <%if (result1.next()) {%>
+                        <%= result1.getString("TeamName")%>
+                        </td>
+                        <%}%>
+                       
+                        <td><a href="AssignPatientBedForm.jsp?patientID=<%=ID%>&doctorID=<%=doctorID%>"> Update Bed </a>
+                         <%if (result2.next()){%>
+                         <%= result1.getString("bedID")%>
+                        </td>
+                        <%}%>
                           <% rowNumber++; %>
                       </tr>
                       <% } %>

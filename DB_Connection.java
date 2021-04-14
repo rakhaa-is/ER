@@ -295,7 +295,7 @@ public class DB_Connection {
         }
         return true;
     }
-     public boolean assignPatientToTeam(int doctorID,int patientID, String teamName) {
+    public boolean assignPatientToTeam(int doctorID,int patientID, String teamName) {
         sqlQuery = "insert into doctorassignpatient(doctorID , PatintID , TeamName )values('" + doctorID + "','" + patientID + "','" + teamName +  "');";
          try{
             Statement stmt = connection.createStatement();
@@ -306,6 +306,54 @@ public class DB_Connection {
         }
         return true;
     }
-    
-
+        public boolean assignPatientToBed(int doctorID,int patientID, int bedID,int roomID) {
+        sqlQuery = "insert into assignPatientToBed(patientID , doctorID , bedID,roomID )values('" + patientID + "','" + doctorID + "','" + bedID  + "','" + roomID +  "');";
+         try{
+            Statement stmt = connection.createStatement();
+            int i=stmt.executeUpdate(sqlQuery);
+        }
+        catch(Exception e){
+           
+        }
+        return true;
+    }
+     public ResultSet getBedsInRoom(int roomID) {
+        sqlQuery = "SELECT * FROM beds WHERE roomID = " + roomID +";";
+        try{
+            preparedStmt = connection.prepareStatement(sqlQuery);
+            resultSet = preparedStmt.executeQuery();
+        }catch(SQLException e){}
+        return resultSet;
+    }
+      public void close(){
+    try{
+    connection.close();
+    }catch (SQLException ex){
+     Logger.getLogger(DB_Connection.class.getName()).log(Level.SEVERE,null,ex);
+    }
+    }
+      public ResultSet getPatientTeam(int ID) {
+        sqlQuery = "select *from doctorassignpatient WHERE PatintID = " + ID +";";
+        try{
+            preparedStmt = connection.prepareStatement(sqlQuery);
+            resultSet = preparedStmt.executeQuery();
+        }catch(SQLException e){}
+        return resultSet;
+    }
+      public ResultSet getPatientBed(int ID) {
+        sqlQuery = "select * from assignPatientToBed WHERE PatintID = " + ID +";";
+        try{
+            preparedStmt = connection.prepareStatement(sqlQuery);
+            resultSet = preparedStmt.executeQuery();
+        }catch(SQLException e){}
+        return resultSet;
+    }
+    public ResultSet getAvilableBeds(String RoomName){
+         sqlQuery = " select beds.id as bedid ,beds.state,beds.roomid,rooms.id from beds,rooms where beds.state ='avilable' and rooms.id=beds.roomid;";
+        try{
+            preparedStmt = connection.prepareStatement(sqlQuery);
+            resultSet = preparedStmt.executeQuery();
+        }catch(SQLException e){}
+        return resultSet;
+    }
 }

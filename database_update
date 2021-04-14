@@ -30,3 +30,8 @@ create table Administrator(
     password VARCHAR(255),
     phonenumber integer(30)
     );
+    mysql> create table assignPatientToBed(
+    -> patientID int(255) ,
+    -> doctorID int(255),
+    -> bedID int(255),
+    -> roomID int (255));

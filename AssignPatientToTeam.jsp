@@ -26,7 +26,7 @@
         <script>
 
             alert("this patient is successfully added to"+teamName);
-
+               window.location= "DisplayPatientInfo.jsp?id=<%=doctorID%>";
         </script>
         <%
             } else {

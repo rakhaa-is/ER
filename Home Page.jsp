@@ -1,4 +1,8 @@
-
+<%-- 
+    Document   : Home_page
+    Created on : 26/03/2021, 03:03:17 م
+    Author     : rakha
+--%>
 <%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -64,7 +68,7 @@ li a:hover {
                if (result){
                     %>
         <ul>
-            <li><a href="Home Page.jsp">Home</a></li>
+            <li><a href="Home_Page.jsp">Home</a></li>
             <li style="float:right; margin-right:20px;"><a href="index.jsp">Log Out</a></li> 
          <li style="float:right; margin-right:-20px;"><img  src="3201525-200.png" width="55" height="55"></li>
   
@@ -84,7 +88,7 @@ li a:hover {
                        %> 
                        
                  <tr>
-                     <td style="background-color:#659EC7; color:white; text-align:center;height:100;width:100;" ><br><br><a style="font-size:1.3em; color: white;" href="DisplayPatientInfo.jsp?id=<%=idNum%>"><img src="patients.png" alt="" height="100" width="100"></a><br>Display All Patient<br></td>
+                     <td style="background-color:#659EC7; color:white; text-align:center;height:100;width:100;" ><br><br><a style="font-size:1.3em; color: white;" href="DisplayPatientInfoToDoctor.jsp?id=<%=idNum%>"><img src="patients.png" alt="" height="100" width="100"></a><br>Display All Patient<br></td>
                     <td style="background-color:#87AFC7; color:white; text-align: center" >
                         <br><br><a style="font-size:1.3em; color: white;" href="DisplayAllPatientHealthStatus.jsp"><img src="patients-record.png" alt="" ></a><br>Patient History Record<br></td>
                     <td style="background-color:#B7CEEC; text-align: center">
@@ -110,7 +114,7 @@ li a:hover {
                 </tr>
                 <tr>
                     <td style="background-color:#737CA1; text-align: center"> 
-                        <br><a style="font-size:1.3em; color: white;" href="DisplayRooms.jsp"><img src="ER-Rooms.png"></a><br>Rooms<br></td>
+                        <br><a style="font-size:1.3em; color: white;" href="displayRoomsToNurces.jsp"><img src="ER-Rooms.png"></a><br>Rooms<br></td>
                 </tr> 
                      <%
                    }else if (role.equalsIgnoreCase("administrator")){

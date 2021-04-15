@@ -1,7 +1,7 @@
 <%-- 
-    Document   : Beds
-    Created on : 15-Mar-2021, 00:38:02
-    Author     : amals
+    Document   : add_beds
+    Created on : 26/03/2021, 03:09:07 م
+    Author     : rakha
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -18,6 +18,11 @@
   background-size:cover;
 }   
     </style>
+    
+    <%
+        String roomID = request.getParameter("ID"); 
+
+        %>
     <body>
         <h1>List of Beds</h1>
         <form name="addbed" action="newBeds.jsp">
@@ -25,8 +30,13 @@
             <table border="1">
                 <tbody>
                     <tr>
+                    <tr>
+                        <td>Room ID</td>
+                        <td><input type="text" name="RoomID" value="<%=roomID%>" size="10"/></td>
+                      
+                    </tr>
                         <td>ID </td>
-                        <td> <input type="text" name="ID" value="" size="10" /></td>
+                        <td><input type="text" name="ID" value="" size="10" /></td>
                        
                     </tr>
                     <tr>
@@ -34,11 +44,7 @@
                         <td><input type="text" name="State" value="" size="10" /></td>
                          
                     </tr>
-                    <tr>
-                        <td>Room ID</td>
-                        <td><input type="text" name="RoomID" value="" size="10"/></td>
-                      
-                    </tr>
+                  
                 </tbody>
             </table>
             <input type="submit" value="Add" name="Addbed" />

@@ -1,8 +1,9 @@
 <%-- 
-    Document   : ModifyBeds
-    Created on : 28-Mar-2021, 00:21:41
-    Author     : amals
+    Document   : AdminBeds
+    Created on : 13/04/2021, 03:58:40 م
+    Author     : rakha
 --%>
+
 <%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -21,21 +22,21 @@
     </head>
     <body>
       
-        
-              <br>
-              <br>
-              <input style="margin-left:40px;" type="button" value="Add new bed" name="AddBed" onclick="location.href='AddBeds.jsp';" />
-              <br>
-              <br>
- 
+       
             
              <%
-            String ID = request.getParameter("ID");
+            
+            String roomID = request.getParameter("roomID");
             DB.DB_Connection beds = new DB.DB_Connection();
-            ResultSet result = beds.getBedsInRoom(Integer.parseInt(ID));
+            ResultSet result = beds.getBedsInRoom(Integer.parseInt(roomID));
             %>
             
            
+              <br>
+              <br>
+              <input style="margin-left:40px;" type="button" value="Add new bed" name="AddBed" onclick="location.href='AddBeds.jsp?ID=<%=roomID%>';"/>
+              <br>
+              <br>
             
             
           <table style="margin-right:auto; margin-left:auto; background-color:white; width: 95%; border-collapse: collapse;" border="2" width="2">
@@ -51,11 +52,11 @@
                      <tbody>
                       <%while(result.next()){%>
                       <tr>
-                          <% String id = result.getString("ID");%>
+                          <% int id = result.getInt("ID");%>
                           <td><%out.print(id);%></td>
                           <% String state = result.getString("state");%>
                           <td><%out.print(state);%></td>
-                          <% String room = result.getString("RoomID");%>
+                          <% int room = result.getInt("RoomID");%>
                           <td><%out.print(room);%></td>
                           <td><a href="updateBedsForm.jsp?ID=<%=result.getInt("ID")%>">Edit</a></td>
                       </tr>

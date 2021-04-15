@@ -1,8 +1,9 @@
 <%-- 
     Document   : updateBedsForm
-    Created on : 01-Apr-2021, 00:25:21
-    Author     : amals
+    Created on : 03/04/2021, 09:22:09 م
+    Author     : rakha
 --%>
+
 <%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -26,11 +27,11 @@
             ResultSet result = user.getBed(Integer.parseInt(ID));
             if(result.next()){
                 String state = result.getString("state");
-                int RoomID = result.getInt("RoomID");
+                String RoomID = result.getString("RoomID");
             %>
           
             
-            <form action="updateBedsCommand.jsp?ID=<%=ID%>" method="POST">
+            <form action="updateBedsCommand.jsp?RoomID=<%=RoomID%>" method="POST">
                  <table style="margin-right:auto; margin-left:auto; color:white" border="0" cellspacing="10">
                     <tbody>
                         <tr>

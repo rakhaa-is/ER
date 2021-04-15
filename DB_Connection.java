@@ -142,6 +142,14 @@ public class DB_Connection {
         
     }
     
+     public ResultSet getBedsInRoom(int roomID) {
+        sqlQuery = "SELECT * FROM BEDS WHERE RoomID = " + roomID + ";";
+        try{
+            preparedStmt = connection.prepareStatement(sqlQuery);
+            resultSet = preparedStmt.executeQuery();
+        }catch(SQLException e){}
+        return resultSet;
+    }
      //return all rooms in the system 
      public ResultSet getAllRooms() {
          sqlQuery = "SELECT * FROM ROOMS;";
@@ -171,13 +179,13 @@ public class DB_Connection {
     }
     
        public int updateRoomInfo(int ID, int numOfBeds, String name) {
-        sqlQuery = "update rooms set ID = ? , numberOfBeds = ? , name = ? WHERE ID = " + ID ;
+        sqlQuery = "Update rooms set ID = ? , numberOfBeds = ? , name = ? WHERE ID = " + ID;
         int i = 0;
         try{
            preparedStmt = connection.prepareStatement(sqlQuery);
-           preparedStmt.setInt(0, ID);
-           preparedStmt.setInt(1, numOfBeds);
-           preparedStmt.setString(2, name);
+           preparedStmt.setInt(1, ID);
+           preparedStmt.setInt(2, numOfBeds);
+           preparedStmt.setString(3, name);
            i = preparedStmt.executeUpdate();
         }
         catch(Exception e){
@@ -186,15 +194,18 @@ public class DB_Connection {
         }
         return i;
     }
+       
+       
+       
         
            public int updateBedInfo(int ID, String state, int RoomID) {
-        sqlQuery = "update beds set ID = ? , state = ? , RoomID = ? WHERE ID = " + ID ;
+        sqlQuery = "Update beds set ID = ? , state = ? , RoomID = ? WHERE ID = " + ID ;
         int i = 0;
         try{
            preparedStmt = connection.prepareStatement(sqlQuery);
-           preparedStmt.setInt(0, ID);
-           preparedStmt.setString(1, state);
-           preparedStmt.setInt(2, RoomID);
+           preparedStmt.setInt(1, ID);
+           preparedStmt.setString(2, state);
+           preparedStmt.setInt(3, RoomID);
            i = preparedStmt.executeUpdate();
         }
         catch(Exception e){
@@ -203,6 +214,7 @@ public class DB_Connection {
         }
         return i;
     }
+           
     
     public boolean isRoomDeleted(int ID) {
  
@@ -236,11 +248,11 @@ public class DB_Connection {
     } 
     
       public boolean addMainTraiage(int PatintID , String HCO3 ,String Temperature ,String CO2 , String BloodPressure ,String OxygenSaturation ,String HeartRate , String SO2 ,
-           String Glucose ,String BaseExcess ,String RespiratoryRate ,String ECG ,String PH ,String PO2 ,String Chiefcomplain ,String CTASscore , String COVIDStatus ){
+           String Glucose ,String BaseExcess ,String RespiratoryRate ,String ECG ,String PH ,String PO2 ,String Chiefcomplain ,String CTASscore , String COVIDStatus , int priority){
        
-        sqlQuery = "INSERT INTO maintraiage (PatintID, HCO3, Temperature, CO2, BloodPressure, OxygenSaturation, HeartRate, SO2, Glucose, BaseExcess, RespiratoryRate, ECG, PH, PO2, Chiefcomplain, CTASscore, COVIDStatus)"
+        sqlQuery = "INSERT INTO maintraiage (PatintID, HCO3, Temperature, CO2, BloodPressure, OxygenSaturation, HeartRate, SO2, Glucose, BaseExcess, RespiratoryRate, ECG, PH, PO2, Chiefcomplain, CTASscore, COVIDStatus , priority)"
                 + "values('" + PatintID + "','" + HCO3 +  "','" + Temperature +  "','" + CO2 +  "','" + BloodPressure +  "','" + OxygenSaturation +  "','" + HeartRate +  "','" + SO2 +  "','" + Glucose +  "','" + BaseExcess +  "','" + RespiratoryRate
-                + "','" + ECG +  "','" + PH +  "','" + PO2 +  "','" + Chiefcomplain +  "','" + CTASscore +  "','" + COVIDStatus + "');";
+                + "','" + ECG +  "','" + PH +  "','" + PO2 +  "','" + Chiefcomplain +  "','" + CTASscore +  "','" + COVIDStatus +  "','" +  priority + "');";
         try{
             Statement stmt = connection.createStatement();
             int i=stmt.executeUpdate(sqlQuery);
@@ -252,9 +264,28 @@ public class DB_Connection {
         return true;
     }
     
+      
     
     public ResultSet getPatientInfo() {
         sqlQuery = "SELECT * FROM patient;";
+        try{
+            preparedStmt = connection.prepareStatement(sqlQuery);
+            resultSet = preparedStmt.executeQuery();
+        }catch(SQLException e){}
+        return resultSet;
+    }
+    
+        public ResultSet getPatientInfoDependOnPriority(int patientID) {
+        sqlQuery = "SELECT * FROM patient WHERE ID =" + patientID + ";";
+        try{
+            preparedStmt = connection.prepareStatement(sqlQuery);
+            resultSet = preparedStmt.executeQuery();
+        }catch(SQLException e){}
+        return resultSet;
+    }
+        
+       public ResultSet getPatientMainTraiageInfoDependOnPriority(int priority) {
+        sqlQuery = "SELECT * FROM maintraiage WHERE priority = " + priority + ";";
         try{
             preparedStmt = connection.prepareStatement(sqlQuery);
             resultSet = preparedStmt.executeQuery();
@@ -295,7 +326,7 @@ public class DB_Connection {
         }
         return true;
     }
-    public boolean assignPatientToTeam(int doctorID,int patientID, String teamName) {
+     public boolean assignPatientToTeam(int doctorID,int patientID, String teamName) {
         sqlQuery = "insert into doctorassignpatient(doctorID , PatintID , TeamName )values('" + doctorID + "','" + patientID + "','" + teamName +  "');";
          try{
             Statement stmt = connection.createStatement();
@@ -306,6 +337,8 @@ public class DB_Connection {
         }
         return true;
     }
+     
+       
         public boolean assignPatientToBed(int doctorID,int patientID, int bedID,int roomID) {
         sqlQuery = "insert into assignPatientToBed(patientID , doctorID , bedID,roomID )values('" + patientID + "','" + doctorID + "','" + bedID  + "','" + roomID +  "');";
          try{
@@ -317,21 +350,9 @@ public class DB_Connection {
         }
         return true;
     }
-     public ResultSet getBedsInRoom(int roomID) {
-        sqlQuery = "SELECT * FROM beds WHERE roomID = " + roomID +";";
-        try{
-            preparedStmt = connection.prepareStatement(sqlQuery);
-            resultSet = preparedStmt.executeQuery();
-        }catch(SQLException e){}
-        return resultSet;
-    }
-      public void close(){
-    try{
-    connection.close();
-    }catch (SQLException ex){
-     Logger.getLogger(DB_Connection.class.getName()).log(Level.SEVERE,null,ex);
-    }
-    }
+        
+        
+     
       public ResultSet getPatientTeam(int ID) {
         sqlQuery = "select *from doctorassignpatient WHERE PatintID = " + ID +";";
         try{
@@ -356,4 +377,15 @@ public class DB_Connection {
         }catch(SQLException e){}
         return resultSet;
     }
+
+    public void close(){
+        try{
+            connection.close();
+        }catch(SQLException ex){
+            Logger.getLogger(DB_Connection.class.getName()).log(Level.SEVERE , null , ex);
+        }
+    }
+    
+    
+
 }

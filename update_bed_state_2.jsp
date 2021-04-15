@@ -1,8 +1,9 @@
 <%-- 
     Document   : update_brd_state_2
-    Created on : 10/04/2021, 02:01:32 ص
-    Author     : haneen
+    Created on : 15/04/2021, 03:58:26 م
+    Author     : rakha
 --%>
+
 
 <%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -25,13 +26,11 @@
                 background-size:cover;
             }   
             ul {
-
                 list-style-type: none;
                 margin: 0;
                 padding: 10px;
                 overflow: hidden;
                 background-color: white;
-
             }
             li {
                 float: left;
@@ -49,7 +48,6 @@
             li a:hover {
                 background-color: #C5C2C2;
             }
-
         </style>
     </head>
     <body>
@@ -67,6 +65,7 @@
                     <th> Bed ID </th>
                     <th> State </th>  
                     <th> Room ID </th>  
+                    <th> Update Bed </th>
                 </tr>
             </thead>
             <tbody>
@@ -75,16 +74,18 @@
                     <% String id = result.getString("ID");%>
                     <td><%out.print(id);%></td>
                     <% String state = result.getString("state");%>
-                    <td><input type="text" id="statevalue" value="<%=state%>"/> </td>
+                    <td><%out.print(state);%></td>
+                  
                     <% String room = result.getString("RoomID");%>
                     <td><%out.print(room);%></td>
                     <td>
-                        <select id="ddselect" onchange="selectedstate();">  
-                            <option>select</option>
-                            <option>available</option>
-                            <option>not available</option>
-                        </select>          
-                        <button onclick='window.location ="UpdateBedStateCommand.jsp?id=<%=id%>&room=<%=room%>&state=" + document.getElementById("statevalue").value;'>Update State</button>
+                        <select id="idselected">  
+                            <option value = "">select</option>
+                            <option value = "Available">Available</option>
+                            <option value = "Not Available">Not Available</option>
+                        </select>  
+                       
+                        <button onclick='window.location ="UpdateBedStateCommand.jsp?ID=<%=id%>&RoomID=<%=room%>&state=" + document.getElementById("idselected").value;'>Update State</button>
                     </td>
                 </tr>
                 <%}%>                     
